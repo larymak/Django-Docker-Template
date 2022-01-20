@@ -7,7 +7,9 @@ COPY requirements.txt  /usr/local/educative/
 # install python 3 and pip
 RUN apt-get update
 RUN apt-get install python3 -y
-RUN apt install python3-pip -y && pip3 install --upgrade pip
+RUN apt install python3-pip -y && pip install --upgrade pip
 
 # install Django dependencies from our requirements file
 RUN cd /usr/local/educative && pip install -r requirements.txt 
+
+CMD ["python",  "manage.py",  "runserver",  "0.0.0.0:8020"]

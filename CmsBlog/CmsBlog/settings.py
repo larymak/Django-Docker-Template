@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-w539utljsm7fw3e#456caiy!#%e2ec7zwkctupa&l50)u^bvb9
 DEBUG = True
 
 ALLOWED_HOSTS = [os.environ['ALLOWED_HOSTS']]
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +81,12 @@ WSGI_APPLICATION = 'CmsBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'name': 'postgres',
+        'user': 'postgres',
+        'password': 'postgres',
+        'host': 'localhost',
+        'port': '5432',
     }
 }
 
@@ -124,3 +131,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.CustomUser'
